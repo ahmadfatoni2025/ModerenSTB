@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-black">
+                <div class="accordion-item border-b border-slate-700 pb-4">
+                    <button class="accordion-header w-full text-left text-xl font-semibold flex justify-between items-center text-white py-2">
+                    Cerita Sukses Para Alumni
+                    <svg class="w-6 h-6 text-white transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                    </svg>
+                    </button>
+                    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out opacity-0">
+                    <p class="pt-4 text-white/60">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur error tempore cum laudantium ratione, excepturi ipsa veniam tempora doloribus culpa quae, odit non eum corporis distinctio natus provident illum animi autem sequi. Enim nostrum cupiditate vero, quidem necessitatibus provident cum doloribus blanditiis asperiores ad reprehenderit dolor. Perferendis eligendi, debitis libero assumenda quaerat impedit repudiandae modi doloremque quia, consequuntur maiores ducimus provident, vel iusto dolores amet enim corporis dignissimos rem. Nostrum pariatur quos commodi aperiam voluptatem dicta suscipit eligendi praesentium, ab, est unde. Minus ad, suscipit voluptatem mollitia amet nihil officiis asperiores? Accusamus aspernatur porro tempore repudiandae eum voluptates fugit beatae.
+                    </p>
+                    </div>
+                </div>
+
+                <div>
+                    <nav class="w-full flex items-center justify-center border text-white">
+                    <ul class="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-20 p-6 lg:p-0 text-center">
+                        <li><a href="#">Program Studi</a></li>
+                        <li><a href="#">Profil</a></li>
+                        <li><a href="#">Kemahasiswaan</a></li>
+                        <li><a href="#">Beasiswa</a></li>
+                    </ul>
+                    </nav>
+                </div>
+</body>
+<script>
+        const items = document.querySelectorAll(".accordion-item");
+
+        items.forEach(item => {
+            const header = item.querySelector(".accordion-header");
+            const content = item.querySelector(".accordion-content");
+            const icon = item.querySelector("svg");
+
+            header.addEventListener("click", () => {
+            const isOpen = content.classList.contains("max-h-96");
+
+            if (isOpen) {
+                // Tutup panel
+                content.classList.remove("max-h-96", "opacity-100", "mt-2");
+                content.classList.add("max-h-0", "opacity-0");
+                icon.classList.remove("rotate-45");
+            } else {
+                // Buka panel
+                content.classList.remove("max-h-0", "opacity-0");
+                content.classList.add("max-h-96", "opacity-100", "mt-2");
+                icon.classList.add("rotate-45");
+            }
+            });
+        });
+        </script>
+</html>
