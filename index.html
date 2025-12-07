@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STIMIK Tunas Bangsa - Perguruan Tinggi Teknologi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #111827;
+            --secondary: #374151;
+            --accent: #7c3aed;
+            --light: #ffffff;
+            --light-gray: #f9fafb;
+            --border: #e5e7eb;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Hero Section Styles */
+        .hero-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+        
+        .accent-line {
+            position: relative;
+        }
+        
+        .accent-line::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #7c3aed, #a855f7);
+            border-radius: 2px;
+        }
+        
+        .btn-elegant {
+            background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(17, 24, 39, 0.1);
+        }
+        
+        .btn-elegant:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(17, 24, 39, 0.15);
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+        }
+        
+        .btn-outline-elegant {
+            background: transparent;
+            color: #111827;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #d1d5db;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-outline-elegant:hover {
+            transform: translateY(-2px);
+            border-color: #7c3aed;
+            color: #7c3aed;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.08);
+        }
+        
+        /* Animations */
+        @keyframes floatUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .animate-float-up {
+            animation: floatUp 0.8s ease-out forwards;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+        
+        .animate-slide-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--light-gray);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+        
+        /* Navigation Styles */
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .nav-link {
+            color: #374151;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #111827;
+            background: rgba(0, 0, 0, 0.02);
+        }
+        
+        .nav-link.active {
+            color: #7c3aed;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: #7c3aed;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+        <nav class="nav-container py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-900 to-gray-700 flex items-center justify-center shadow-md">
+                        <span class="font-bold text-white text-lg">ST</span>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">STIMIK</h1>
+                        <p class="text-xs text-gray-500 -mt-1 tracking-wider">Tunas Bangsa</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-2">
+                    <a href="#" class="nav-link active">Beranda</a>
+                    <a href="#" class="nav-link">Profil</a>
+                    <a href="#" class="nav-link">Akademik</a>
+                    <a href="#" class="nav-link">PMB</a>
+                    <a href="#" class="nav-link">Kemahasiswaan</a>
+                    <a href="#" class="nav-link">Berita</a>
+                    
+                    <div class="ml-4 pl-4 border-l border-gray-200">
+                        <a href="#" class="btn-elegant text-sm px-6 py-2">
+                            <i class="fas fa-user-graduate mr-2"></i>Portal Mahasiswa
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-toggle" class="lg:hidden w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                    <i class="fas fa-bars text-gray-700"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="min-h-screen hero-gradient pt-24 pb-20 overflow-hidden relative">
+        <!-- Background decorative elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-1/4 -left-20 w-64 h-64 rounded-full bg-gradient-to-br from-purple-50 to-pink-50 blur-3xl opacity-60"></div>
+            <div class="absolute bottom-1/4 -right-20 w-80 h-80 rounded-full bg-gradient-to-br from-blue-50 to-cyan-50 blur-3xl opacity-60"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-br from-gray-50 to-white blur-3xl opacity-40"></div>
+        </div>
+        
+        <!-- Geometric patterns -->
+        <div class="absolute top-40 right-20 w-32 h-32 border border-gray-200/50 rounded-3xl transform rotate-45 opacity-30 hidden xl:block"></div>
+        <div class="absolute bottom-40 left-20 w-24 h-24 border border-gray-200/50 rounded-2xl transform -rotate-12 opacity-30 hidden xl:block"></div>
+        
+        <div class="nav-container relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Content -->
+                <div class="space-y-8 animate-slide-left" style="animation-delay: 0.2s">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-purple-50 to-pink-50 rounded-full border border-purple-100">
+                        <span class="w-2 h-2 bg-purple-600 rounded-full animate-pulse"></span>
+                        <span class="text-sm font-medium text-purple-700 tracking-wide">PMB 2025/2026 • Pendaftaran Dibuka</span>
+                    </div>
+                    
+                    <!-- Main Heading -->
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
+                        <span class="block text-gray-900">Masa Depan Digital</span>
+                        <span class="block mt-2 accent-line text-gray-900">Dimulai di Sini</span>
+                    </h1>
+                    
+                    <!-- Subheading -->
+                    <p class="text-xl text-gray-600 leading-relaxed max-w-2xl">
+                        STIMIK Tunas Bangsa menghadirkan pendidikan teknologi informasi 
+                        yang mengintegrasikan kurikulum berbasis industri dengan pengalaman 
+                        belajar transformatif untuk mencetak profesional IT unggul.
+                    </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="#" class="btn-elegant group">
+                            <span class="flex items-center justify-center">
+                                Daftar Sekarang
+                                <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
+                            </span>
+                        </a>
+                        <a href="#" class="btn-outline-elegant group">
+                            <span class="flex items-center justify-center">
+                                <i class="fas fa-play-circle mr-3"></i>
+                                Jelajahi Kampus
+                            </span>
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-6 pt-8">
+                        <div class="stat-card p-5 rounded-2xl">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
+                                    <i class="fas fa-graduation-cap text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-gray-900">1.4K+</div>
+                                    <div class="text-sm text-gray-500">Mahasiswa Aktif</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card p-5 rounded-2xl">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center">
+                                    <i class="fas fa-briefcase text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-gray-900">95%</div>
+                                    <div class="text-sm text-gray-500">Penyerapan Kerja</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card p-5 rounded-2xl">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center">
+                                    <i class="fas fa-trophy text-green-600"></i>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-gray-900">4</div>
+                                    <div class="text-sm text-gray-500">Program Studi</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Content - Hero Image -->
+                <div class="relative animate-slide-right" style="animation-delay: 0.4s">
+                    <div class="relative">
+                        <!-- Main Image Container -->
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                            <div class="aspect-[4/5] overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
+                                     alt="STIMIK Tunas Bangsa Campus" 
+                                     class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+                            </div>
+                            <!-- Overlay gradient -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                        </div>
+                        
+                        <!-- Floating Card 1 -->
+                        <div class="absolute -top-6 -left-6 bg-white rounded-2xl p-5 shadow-xl animate-float-up" style="animation-delay: 0.6s">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                                    <i class="fas fa-laptop-code text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-900">Lab Modern</div>
+                                    <div class="text-xs text-gray-500">Teknologi Terkini</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Card 2 -->
+                        <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl p-5 shadow-xl animate-float-up" style="animation-delay: 0.8s">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                                    <i class="fas fa-users text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-900">Dosen Ahli</div>
+                                    <div class="text-xs text-gray-500">Industri & Akademisi</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Accreditation Badge -->
+                        <div class="absolute top-8 right-8">
+                            <div class="bg-gradient-to-br from-gray-900 to-gray-700 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                                Terakreditasi BAN-PT
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decorative Line -->
+                    <div class="absolute -bottom-8 left-1/4 w-1/2 h-1 bg-gradient-to-r from-transparent via-purple-300 to-transparent opacity-50"></div>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <div class="flex flex-col items-center space-y-2">
+                    <span class="text-sm text-gray-500 tracking-wider">Jelajahi Lebih</span>
+                    <div class="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
+                        <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Trust Indicators Section -->
+    <section class="py-16 bg-white border-t border-gray-100">
+        <div class="nav-container">
+            <div class="text-center mb-12">
+                <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Dipercaya Oleh</h3>
+                <div class="w-16 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <!-- Partner Logos -->
+                <div class="flex items-center justify-center p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-gray-300 mb-1">G</div>
+                        <div class="text-sm font-semibold text-gray-700">Google</div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-center p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-gray-300 mb-1">M</div>
+                        <div class="text-sm font-semibold text-gray-700">Microsoft</div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-center p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-gray-300 mb-1">I</div>
+                        <div class="text-sm font-semibold text-gray-700">IBM</div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-center p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-gray-300 mb-1">O</div>
+                        <div class="text-sm font-semibold text-gray-700">Oracle</div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-center p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-gray-300 mb-1">A</div>
+                        <div class="text-sm font-semibold text-gray-700">AWS</div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-center p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-gray-300 mb-1">C</div>
+                        <div class="text-sm font-semibold text-gray-700">Cisco</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Preview Section -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="nav-container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Program Studi Unggulan</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Kembangkan kompetensi teknologi dengan kurikulum yang relevan dengan kebutuhan industri</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Program Card 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-code text-2xl text-purple-600"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-sm font-medium">Teknologi</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Informatika</h3>
+                    <p class="text-gray-600 mb-6">Program studi yang fokus pada pengembangan perangkat lunak, kecerdasan buatan, dan sistem komputasi untuk solusi teknologi inovatif.</p>
+                    <a href="#" class="inline-flex items-center text-purple-600 font-semibold group">
+                        <span>Selengkapnya</span>
+                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+                
+                <!-- Program Card 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-database text-2xl text-blue-600"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium">Bisnis & TI</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Sistem Informasi</h3>
+                    <p class="text-gray-600 mb-6">Integrasi teknologi informasi dengan proses bisnis untuk menciptakan sistem yang efisien dan mendukung pengambilan keputusan.</p>
+                    <a href="#" class="inline-flex items-center text-blue-600 font-semibold group">
+                        <span>Selengkapnya</span>
+                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                // This would toggle mobile menu in full implementation
+                alert('Mobile menu akan tampil di sini');
+            });
+        }
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-float-up');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.stat-card, .bg-white.rounded-2xl').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add hover effect to buttons
+        const buttons = document.querySelectorAll('.btn-elegant, .btn-outline-elegant');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-2px)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Initialize animation delays for staggered effect
+        const heroElements = document.querySelectorAll('.animate-slide-left, .animate-slide-right, .animate-float-up');
+        heroElements.forEach((el, index) => {
+            el.style.animationDelay = `${0.2 + (index * 0.1)}s`;
+        });
+        
+        // Add scroll indicator functionality
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.querySelector('.animate-bounce');
+            if (scrollIndicator && window.scrollY > 100) {
+                scrollIndicator.style.opacity = '0';
+                scrollIndicator.style.transition = 'opacity 0.3s';
+            }
+        });
+    </script>
+</body>
+</html>
